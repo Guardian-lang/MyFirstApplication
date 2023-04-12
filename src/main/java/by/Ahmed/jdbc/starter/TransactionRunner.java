@@ -36,7 +36,7 @@ public class TransactionRunner {
         PreparedStatement updateTicketStatement = null;
 
         try {
-            connection = ConnectionManager.open();
+            connection = ConnectionManager.get();
             updateFlightStatement =
                     connection.prepareStatement(updateFlightSQL);
             updateTicketStatement =
