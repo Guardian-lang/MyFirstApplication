@@ -1,7 +1,7 @@
 package by.Ahmed.jdbc.starter.dao;
 
 import by.Ahmed.jdbc.starter.DaoException;
-import by.Ahmed.jdbc.starter.dto.*;
+import by.Ahmed.jdbc.starter.dto.TicketFilter;
 import by.Ahmed.jdbc.starter.entity.Flight;
 import by.Ahmed.jdbc.starter.entity.FlightStatus;
 import by.Ahmed.jdbc.starter.entity.Ticket;
