@@ -30,7 +30,7 @@ public class App
                 """;
 
 
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var statement = connection.createStatement()) {
 
             var result = statement.executeQuery(sql);
@@ -51,7 +51,7 @@ public class App
                 """;
 
 
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var statement = connection.createStatement()) {
 
             var result = statement.executeQuery(sql);
@@ -114,7 +114,7 @@ public class App
         PreparedStatement updateTicketStatement = null;
 
         try {
-            connection = ConnectionManager.open();
+            connection = ConnectionManager.get();
             updateFlightStatement =
                     connection.prepareStatement(updateFlightSQL);
             updateTicketStatement =
