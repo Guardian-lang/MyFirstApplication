@@ -39,21 +39,9 @@ public class SeatDao implements Dao <Long, Seat>{
             WHERE a.id = ?
             """;
 
-    private static final String UPDATE = """
-            UPDATE seat SET
-            seat_no = ?
-            WHERE aircraft_id = ?""";
-
     @Override
     public boolean update(Seat seat) {
-        try (var connection = ConnectionManager.get();
-             var statement = connection.prepareStatement(UPDATE)) {
-            statement.setString(1, seat.getSeatNo());
-            statement.setLong(2, seat.getAircraftId());
-            return statement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
+        return false;
     }
 
     @Override
