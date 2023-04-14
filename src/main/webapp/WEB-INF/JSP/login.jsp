@@ -20,7 +20,7 @@
   <label for="password">Password:
     <input type="password" name="password" id="password" required>
   </label><br>
-  <button type="submit">Login</button>
+  <button type="submit">Sign In</button>
   <a href="${pageContext.request.contextPath}/registration">
     <button type="button">Sign Up</button>
   </a>

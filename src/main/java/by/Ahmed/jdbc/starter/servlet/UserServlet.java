@@ -2,7 +2,6 @@ package by.Ahmed.jdbc.starter.servlet;
 
 import by.Ahmed.jdbc.starter.dto.UserDto;
 import by.Ahmed.jdbc.starter.service.UserService;
-import by.Ahmed.jdbc.starter.utils.JspHelper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,8 +11,8 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/user")
+public class UserServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
 
