@@ -1,6 +1,5 @@
 package by.Ahmed.jdbc.starter.servlet;
 
-
 import by.Ahmed.jdbc.starter.dto.CreateUserDto;
 import by.Ahmed.jdbc.starter.entity.Gender;
 import by.Ahmed.jdbc.starter.entity.Role;
