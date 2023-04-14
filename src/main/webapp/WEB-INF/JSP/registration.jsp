@@ -1,0 +1,38 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Ahmed
+  Date: 14.04.2023
+  Time: 18:11
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+  <title>Title</title>
+</head>
+<body>
+<form action="/registration" method="post">
+  <label for="name">Name:
+    <input type="text" name="name" id="name">
+  </label><br/>
+  <label for="birthday">Birthday:
+    <input type="date" name="birthday" id="birthday">
+  </label><br/>
+  <label for="email">Email:
+    <input type="text" name="email" id="email">
+  </label><br/>
+  <label for="pwd">Password:
+    <input type="password" name="pwd" id="pwd">
+  </label><br/>
+  <select name="role" id="role">
+    <option label="USER">USER</option>
+    <option label="ADMIN">ADMIN</option>
+  </select><br/>
+  <input type="radio" name="gender" VALUE="MALE"> MALE
+  <br/>
+  <input type="radio" name="gender" VALUE="FEMALE"> FEMALE
+  <br/>
+  <input type="submit" value="Send">
+</form>
+</body>
+</html>
