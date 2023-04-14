@@ -2,10 +2,14 @@ package by.Ahmed.jdbc.starter.service;
 
 import by.Ahmed.jdbc.starter.dao.UserDao;
 import by.Ahmed.jdbc.starter.dto.CreateUserDto;
+import by.Ahmed.jdbc.starter.dto.UserDto;
 import by.Ahmed.jdbc.starter.mapper.CreateUserMapper;
+import by.Ahmed.jdbc.starter.mapper.UserMapper;
 import by.Ahmed.jdbc.starter.validator.CreateUserValidator;
 import by.Ahmed.jdbc.starter.validator.ValidationException;
 import lombok.NoArgsConstructor;
+
+import java.util.Optional;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -30,5 +34,12 @@ public class UserService {
 
     public static UserService getInstance() {
         return INSTANCE;
+    }
+
+    private final UserMapper userMapper = UserMapper.getInstance();
+
+    public Optional<UserDto> login(String email, String password) {
+        return userDao.findByEmailAndPassword(email, password)
+                .map(userMapper::mapFrom);
     }
 }
