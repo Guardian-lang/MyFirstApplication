@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
   <title>Title</title>
@@ -25,13 +27,14 @@
     <input type="password" name="pwd" id="pwd">
   </label><br/>
   <select name="role" id="role">
-    <option label="USER">USER</option>
-    <option label="ADMIN">ADMIN</option>
+    <c:forEach var="role" items="${requestScope.roles}">
+      <option label="${role}">${role}</option><br>
+    </c:forEach>
   </select><br/>
-  <input type="radio" name="gender" VALUE="MALE"> MALE
-  <br/>
-  <input type="radio" name="gender" VALUE="FEMALE"> FEMALE
-  <br/>
+  <c:forEach var="gender" items="${requestScope.genders}">
+    <input type="radio" name="gender" VALUE="${gender}"> ${gender}
+    <br/>
+  </c:forEach>
   <input type="submit" value="Send">
 </form>
 </body>
