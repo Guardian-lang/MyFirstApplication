@@ -9,12 +9,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
 
 import static by.Ahmed.jdbc.starter.utils.UrlPath.LOGIN;
 
 @WebServlet(LOGIN)
+@Slf4j
 public class LoginServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
@@ -27,11 +32,21 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        userService.login(req.getParameter("email"), req.getParameter("password"))
-                .ifPresentOrElse(
-                        user -> onLoginSuccess(user, req, resp),
-                        () -> onLoginFail(req, resp)
-                );
+        Configuration configuration = new Configuration();
+        configuration.configure();
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory()) {
+            try (Session session = sessionFactory.openSession()) {
+                userService.login(req.getParameter("email"), req.getParameter("password"))
+                        .ifPresentOrElse(
+                                user -> {
+                                    onLoginSuccess(user, req, resp);
+                                    log.info("User is logged: {}", user);},
+                                () -> onLoginFail(req, resp)
+                        );
+                session.getTransaction().commit();
+                session.close();
+            }
+        }
     }
 
     @SneakyThrows
