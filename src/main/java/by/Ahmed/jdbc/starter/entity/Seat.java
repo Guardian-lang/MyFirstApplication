@@ -1,39 +1,34 @@
 package by.Ahmed.jdbc.starter.entity;
 
+import lombok.*;
+
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Embeddable
+@Table(name = "seat")
 public class Seat {
-    private Long aircraftId;
-    private String seatNo;
-
-    public Seat(Long aircraftId, String seatNo) {
-        this.aircraftId = aircraftId;
-        this.seatNo = seatNo;
-    }
-
-    public Seat() {
-
-    }
+    private Long aircraft_id;
+    private String seat_no;
 
     public Long getAircraftId() {
-        return aircraftId;
+        return aircraft_id;
+    }
+
+    public void setAircraftId(Long aircraft_id) {
+        this.aircraft_id = aircraft_id;
     }
 
     public String getSeatNo() {
-        return seatNo;
+        return seat_no;
     }
 
-    public void setAircraftId(Long aircraftId) {
-        this.aircraftId = aircraftId;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
-    }
-
-    @Override
-    public String toString() {
-        return "Seat{" +
-                "aircraftId=" + aircraftId +
-                ", seatNo='" + seatNo + '\'' +
-                '}';
+    public void setSeatNo(String seat_no) {
+        this.seat_no = seat_no;
     }
 }

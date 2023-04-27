@@ -1,109 +1,35 @@
 package by.Ahmed.jdbc.starter.entity;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity
+@Table(name = "flight")
 public class Flight {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "flight_no")
     private String flightNo;
+    @Column(name = "departure_date")
     private LocalDateTime departureDate;
+    @Column(name = "departure_airport_code")
     private String departureAirportCode;
+    @Column(name = "arrival_date")
     private LocalDateTime arrivalDate;
+    @Column(name = "arrival_airport_code")
     private String arrivalAirportCode;
+    @Column(name = "aircraft_id")
     private Integer aircraftId;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private FlightStatus status;
-
-    public Flight() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", flightNo='" + flightNo + '\'' +
-                ", departureDate=" + departureDate +
-                ", departureAirportCode='" + departureAirportCode + '\'' +
-                ", arrivalDate=" + arrivalDate +
-                ", arrivalAirportCode='" + arrivalAirportCode + '\'' +
-                ", aircraftId=" + aircraftId +
-                ", status=" + status +
-                '}';
-    }
-
-    public Flight(Long id, String flightNo, LocalDateTime departureDate, String departureAirportCode, LocalDateTime arrivalDate, String arrivalAirportCode, Integer aircraftId, FlightStatus status) {
-        this.id = id;
-        this.flightNo = flightNo;
-        this.departureDate = departureDate;
-        this.departureAirportCode = departureAirportCode;
-        this.arrivalDate = arrivalDate;
-        this.arrivalAirportCode = arrivalAirportCode;
-        this.aircraftId = aircraftId;
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFlightNo() {
-        return flightNo;
-    }
-
-    public void setFlightNo(String flightNo) {
-        this.flightNo = flightNo;
-    }
-
-    public LocalDateTime getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(LocalDateTime departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public String getDepartureAirportCode() {
-        return departureAirportCode;
-    }
-
-    public void setDepartureAirportCode(String departureAirportCode) {
-        this.departureAirportCode = departureAirportCode;
-    }
-
-    public LocalDateTime getArrivalDate() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(LocalDateTime arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
-
-    public String getArrivalAirportCode() {
-        return arrivalAirportCode;
-    }
-
-    public void setArrivalAirportCode(String arrivalAirportCode) {
-        this.arrivalAirportCode = arrivalAirportCode;
-    }
-
-    public Integer getAircraftId() {
-        return aircraftId;
-    }
-
-    public void setAircraftId(Integer aircraftId) {
-        this.aircraftId = aircraftId;
-    }
-
-    public FlightStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(FlightStatus status) {
-        this.status = status;
-    }
-
 
 }

@@ -1,38 +1,20 @@
 package by.Ahmed.jdbc.starter.entity;
 
+import lombok.*;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity
+@Table(name = "aircraft")
 public class Aircraft {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "model")
     private String model;
-
-    public Aircraft() {
-    }
-
-    public Aircraft(Long id, String model) {
-        this.id = id;
-        this.model = model;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    @Override
-    public String toString() {
-        return "Aircraft{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                '}';
-    }
 }

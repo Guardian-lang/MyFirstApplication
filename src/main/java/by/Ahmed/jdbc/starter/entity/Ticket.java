@@ -1,85 +1,29 @@
 package by.Ahmed.jdbc.starter.entity;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity
+@Table(name = "ticket")
 public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "passport_no")
     private String passportNo;
+    @Column(name = "passenger_name")
     private String passengerName;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "flight_id")
     private Flight flight;
+    @Column(name = "seat_no")
     private String seatNo;
     private BigDecimal cost;
-
-    public Ticket() {
-
-    }
-
-    public Ticket(Long id, String passportNo, String passengerName, Flight flightId, String seatNo, BigDecimal cost) {
-        this.id = id;
-        this.passportNo = passportNo;
-        this.passengerName = passengerName;
-        this.flight = flightId;
-        this.seatNo = seatNo;
-        this.cost = cost;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getPassportNo() {
-        return passportNo;
-    }
-
-    public String getPassengerName() {
-        return passengerName;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public BigDecimal getCost() {
-        return cost;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setPassportNo(String passportNo) {
-        this.passportNo = passportNo;
-    }
-
-    public void setPassengerName(String passengerName) {
-        this.passengerName = passengerName;
-    }
-
-    public void setFlightId(Flight flightId) {
-        this.flight = flightId;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
-    }
-
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
-    }
-
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "id=" + id +
-                ", passportNo='" + passportNo + '\'' +
-                ", passengerName='" + passengerName + '\'' +
-                ", flightId=" + flight +
-                ", seatNo='" + seatNo + '\'' +
-                ", cost=" + cost +
-                '}';
-    }
 }
